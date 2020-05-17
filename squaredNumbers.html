@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+  <head>
+    <title>Squared Numbers</title>
+  </head>
+
+  <body>
+    <div class="w3-container w3-deep-purple">
+      <h1>Squared Numbers</h1>
+    </div>
+
+    <div class="w3-container w3-purple">
+      <h2>What is it?</h2>
+      <p>For any number x, we can calculate its square number x<sup>2</sup> by
+        calculating x * x.</p>
+      <p>For example, if x = 4 then x<sup>2</sup> = 16 because 4 * 4 = 16.</p>
+    </div>
+
+    <div class="w3-container">
+      <h2>Try it</h2>
+      <P>Choose a number x using the range slider below:</P>
+      <input class="w3-input" type="range" id="myRangeSlider" min="0" max="32"
+      value="0" onChange="drawSquares()">
+      <label id="myLabel">x = 0 and x * x = 0</label>
+      <BR>
+      <canvas id="myCanvas"></canvas>
+      <script src="squaredNumbers.js"></script>
+    </div>
+
+    <div class="w3-container w3-pale-yellow">
+      <h2>See the code</h2>
+      <script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fcode3-14%2FsquaredNumbers%2Fblob%2Fmaster%2FsquaredNumbers.js&style=solarized-light&showBorder=on&showLineNumbers=on"></script>
+    </div>
+
+    <div class="w3-container w3-pale-blue">
+      <h2>Learn more</h2>
+      <p><a href="https://www.khanacademy.org/math/arithmetic-home/multiply-divide/mult-intro/v/multiplication-intro">
+        Multiplication intro</a> at Khanacademy</p>
+      <p><a href="https://www.w3schools.com/jsref/canvas_rect.asp">
+        HTML canvas rect() Method</a> at w3schools</p>
+      <p><a href="https://www.w3schools.com/js/js_loop_for.asp">
+        JavaScript For Loop</a> at w3schools</p>
+    </div>
+
+    <div class="w3-container w3-dark-gray">
+      <p>Vivek Bhardwaj, 2020</p>
+    </div>
+    
+  </body>
+</html>

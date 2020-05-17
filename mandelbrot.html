@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+  <head>
+    <title>Mandelbrot</title>
+  </head>
+
+  <body>
+    <div class="w3-container w3-deep-purple">
+      <h1>Mandelbrot Set</h1>
+    </div>
+
+    <div class="w3-container w3-purple">
+      <h2>What is it?</h2>
+      <p>The Mandelbrot set contains sequences of complex numbers which are
+        produced by the mathematical function f(z) = z<sup>2</sup> + c. They can
+        be visualised graphically to produce an infinite fractal image.</p>
+    </div>
+
+    <div class="w3-container">
+      <h2>Try it</h2>
+      <p>Click on the image below to zoom in:</p>
+      <p>(Note: The purple area is best for zooming)</p>
+      <canvas id="myCanvas" width="800" height="800"></canvas>
+      <script src="mandelbrot.js"></script>
+      <BR>
+      <button id="zoomOut" onClick="zoomOut()" class="w3-button w3-white
+        w3-border w3-border-blue w3-round-large">Zoom Out</button>
+      <button id="resetMandelbrot" onClick="resetMandelbrot()" class="w3-button
+        w3-white w3-border w3-border-blue w3-round-large">Reset</button>
+      <BR>
+    </div>
+
+    <div class="w3-container w3-pale-yellow">
+      <h2>See the code</h2>
+      <script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fcode3-14%2Fmandelbrot%2Fblob%2Fmaster%2Fmandelbrot.js&style=solarized-light&showBorder=on&showLineNumbers=on"></script>
+    </div>
+
+    <div class="w3-container w3-pale-blue">
+      <h2>Learn more</h2>
+      <p><a href="https://www.khanacademy.org/math/precalculus/x9e81a4f98389efdf:complex/x9e81a4f98389efdf:complex-plane/v/plotting-complex-numbers-on-the-complex-plane">
+        The Complex Plane</a> at Khan Academy</p>
+      <p><a href="https://www.khanacademy.org/math/precalculus/x9e81a4f98389efdf:complex/x9e81a4f98389efdf:complex-mul/a/multiplying-complex-numbers">
+        Multiplying complex numbers</a> at Khan Academy</p>
+      <p><a href="https://en.wikipedia.org/wiki/Mandelbrot_set">
+        Mandelbrot set</a> at Wikipedia</p>
+    </div>
+
+    <div class="w3-container w3-dark-gray">
+      <p>Vivek Bhardwaj, 2020</p>
+    </div>
+  </body>
+</html>
