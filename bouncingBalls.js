@@ -23,9 +23,9 @@ class Ball {
 
 var balls = new Array();
 
-const numBalls = 100;
+const numBalls = 20;
 const ballRadius = 20;
-const maxSpeed = 20;
+const maxSpeed = 15;
 
 createBalls();
 window.requestAnimationFrame(drawBalls);
@@ -64,26 +64,27 @@ function drawBalls() {
       0, 2 * Math.PI);
     drawingContext2D.stroke();
 
-    if (gravityOn) {
-      balls[i].yVelocity += 9.8 / 30; // y-axis is upside down. Assume 30 fps.
+    // If ball is outside of canvas then reverse its velocity
+    if (balls[i].xPosition <= ballRadius && balls[i].xVelocity < 0) {
+      balls[i].xVelocity = -balls[i].xVelocity;
+    } else if (balls[i].xPosition >= SIZE - ballRadius && balls[i].xVelocity > 0) {
+      balls[i].xVelocity = -balls[i].xVelocity;
+    }
+
+    if (balls[i].yPosition <= ballRadius && balls[i].yVelocity < 0) {
+      balls[i].yVelocity = -balls[i].yVelocity;
+    } else if (balls[i].yPosition >= SIZE - ballRadius && balls[i].yVelocity > 0) {
+      balls[i].yVelocity = -balls[i].yVelocity;
     }
 
     // Calculate its new position
     balls[i].xPosition = balls[i].xPosition + balls[i].xVelocity;
     balls[i].yPosition = balls[i].yPosition + balls[i].yVelocity;
 
-    // Invert the velocity if the ball has reached edge of screen
-    if (balls[i].xPosition - ballRadius <= 0
-      || balls[i].xPosition + ballRadius > SIZE) {
-      balls[i].xVelocity = -balls[i].xVelocity;
+    // Simulate gravity if required
+    if (gravityOn) {
+      balls[i].yVelocity += 9.8 / 30; // y-axis is upside down. Assume 30 fps.
     }
-
-    if (balls[i].yPosition - ballRadius <= 0
-      || balls[i].yPosition + ballRadius > SIZE) {
-      balls[i].yVelocity = -balls[i].yVelocity;
-    }
-
   }
-
   window.requestAnimationFrame(drawBalls);
 }
