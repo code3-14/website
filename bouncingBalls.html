@@ -14,13 +14,16 @@
 
     <div class="w3-container w3-purple">
       <h2>What is it?</h2>
-      <p>We can simulate the motion of balls as they bounce off the edges of
-      the screen.</p>
+      <p>We can simulate the motion of balls with gravity and friction from
+        bouncing off the ground.</p>
     </div>
 
     <div class="w3-container">
       <h2>Try it</h2>
-      <p>Set gravity on: <input type="checkbox" id="gravityCheckbox"></p>
+      <p>Turn gravity on: <input type="checkbox" id="gravityCheckbox">
+      <br>Turn ground friction on: <input type="checkbox" id="frictionCheckbox">
+      <br><button onClick="resetBalls()" class="w3-button
+        w3-white w3-border w3-border-blue w3-round-large">Reset</button></p>
       <canvas id="myCanvas"></canvas>
       <script src="bouncingBalls.js"></script>
       <BR>
@@ -28,7 +31,10 @@
 
     <div class="w3-container w3-pale-yellow">
       <h2>See the code</h2>
-
+      <p><a href="https://github.com/code3-14/website/blob/master/bouncingBalls.html">
+        bouncingBalls.html</a> at GitHub</p>
+      <p><a href="https://github.com/code3-14/website/blob/master/bouncingBalls.js">
+        bouncingBalls.js</a> at GitHub</p>
     </div>
 
     <div class="w3-container w3-pale-blue">

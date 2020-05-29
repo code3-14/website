@@ -23,12 +23,12 @@ class Ball {
 
 var balls = new Array();
 
-const numBalls = 20;
-const ballRadius = 20;
-const maxSpeed = 15;
+const numBalls = 50;
+const ballRadius = SIZE / 50;
+const maxSpeed = 8;
 
 createBalls();
-window.requestAnimationFrame(drawBalls);
+drawBalls();
 
 function createBalls() {
 
@@ -49,11 +49,14 @@ function drawBalls() {
   drawingContext2D.fillStyle = "white";
   drawingContext2D.fillRect(0, 0, SIZE, SIZE);
 
+  // Set a colour for our balls
+  drawingContext2D.fillStyle = "black";
+
   // Is the gravity checkbox on?
   var gravityOn = document.getElementById('gravityCheckbox').checked;
 
-  // Set a colour for our balls
-  drawingContext2D.fillStyle = "black";
+  // Is the friction checkbox on?
+  var frictionOn = document.getElementById('frictionCheckbox').checked;
 
   // For each ball ...
   for (i = 0; i < balls.length; i++ ) {
@@ -64,27 +67,58 @@ function drawBalls() {
       0, 2 * Math.PI);
     drawingContext2D.stroke();
 
-    // If ball is outside of canvas then reverse its velocity
+    // If ball is outside left of canvas and is moving further outside
+    // then reverse its velocity
     if (balls[i].xPosition <= ballRadius && balls[i].xVelocity < 0) {
       balls[i].xVelocity = -balls[i].xVelocity;
-    } else if (balls[i].xPosition >= SIZE - ballRadius && balls[i].xVelocity > 0) {
+
+    // If ball is outside right of canvas and is moving further outside
+    // then reverse its velocity
+  } else if (balls[i].xPosition + ballRadius >= SIZE && balls[i].xVelocity > 0) {
       balls[i].xVelocity = -balls[i].xVelocity;
     }
 
+    // If ball is above top of canvas and is moving further above
+    // then reverse its velocity
     if (balls[i].yPosition <= ballRadius && balls[i].yVelocity < 0) {
       balls[i].yVelocity = -balls[i].yVelocity;
-    } else if (balls[i].yPosition >= SIZE - ballRadius && balls[i].yVelocity > 0) {
+
+    // If ball is below bottom of canvas and is moving further below
+    // then reverse its velocity
+  } else if (balls[i].yPosition + ballRadius >= SIZE && balls[i].yVelocity > 0) {
       balls[i].yVelocity = -balls[i].yVelocity;
+
+      // If friction checkbox is on then reduce velocity by 20% and fill
+      // ball with colour
+      if (frictionOn) {
+        balls[i].xVelocity *= 0.8;
+        balls[i].yVelocity *= 0.8;
+
+        drawingContext2D.fill();
+      }
     }
 
     // Calculate its new position
-    balls[i].xPosition = balls[i].xPosition + balls[i].xVelocity;
-    balls[i].yPosition = balls[i].yPosition + balls[i].yVelocity;
+    balls[i].xPosition += balls[i].xVelocity;
+    balls[i].yPosition += balls[i].yVelocity;
 
-    // Simulate gravity if required
-    if (gravityOn) {
+    // Simulate gravity if required and only if ball is above ground
+    if (gravityOn && balls[i].yPosition + ballRadius < SIZE) {
       balls[i].yVelocity += 9.8 / 30; // y-axis is upside down. Assume 30 fps.
     }
   }
+
   window.requestAnimationFrame(drawBalls);
+}
+
+function resetBalls() {
+
+  // Clear the balls array
+  balls = new Array();
+
+  // Uncheck the checkboxes
+  document.getElementById('gravityCheckbox').checked = false;
+  document.getElementById('frictionCheckbox').checked = false;
+
+  createBalls();
 }
