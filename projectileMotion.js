@@ -21,9 +21,7 @@ function initialise(){
   xPosition = 0;
   yPosition = SIZE - 1;
   xVelocity = (SIZE * 0.2) / 30;
-  //yVelocity = -(SIZE * 0.7) / 30;
   yVelocity = -0.7 * Math.sqrt(SIZE);
-
 
   // Set a random wind speed
   xVelocityWind = (Math.random() - 0.5) * 10;
@@ -75,6 +73,7 @@ function drawProjectile() {
 
   window.requestAnimationFrame(drawProjectile);
 
-  // Only calculate projectile motion if it is above the ground
+  // Once the projectile has fallen far beneath the ground, initialise another
+  // projectile
   if (yPosition > SIZE * 3) initialise();
 }
